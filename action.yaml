@@ -1,8 +1,8 @@
 name: "R package - check spelling action"
 description: "Github Action to implement R development check spelling for package development"
 branding:
-  icon: 'arrow-down'
-  color: 'blue'
+  icon: 'feather'
+  color: 'green'
 runs:
   using: "composite"
   steps:
