@@ -16,4 +16,4 @@ runs:
 
       - name: Check spelling
         run: ${GITHUB_ACTION_PATH}/spell-check.R
-        shell: Rscript
+        shell: Rscript {0}
