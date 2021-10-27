@@ -5,7 +5,7 @@ cat("\n==================================\n")
 cat(paste("repo_path: \"", repo_path, "\"\n", sep=""))
 cat("==================================\n")
 
-spell_check_result <- devtools::spell_check(pkg = repo_path)
+spell_check_result <- spelling::spell_check_package(pkg = repo_path, vignettes = TRUE, use_wordlist = TRUE)
 print(spell_check_result)
 # count detected words
 no_of_detected_words <- length(spell_check_result[,1])
