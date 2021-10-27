@@ -12,6 +12,7 @@ runs:
           ncores <- parallel::detectCores(all.tests = FALSE, logical = TRUE)
           # install devtools, if not installed
           if (!require("devtools")) install.packages("devtools", upgrade = "never", Ncpus = ncores)
+          if (!require("spelling")) install.packages("spelling", upgrade = "never", Ncpus = ncores)
         shell: Rscript {0}
 
       - name: Check spelling
