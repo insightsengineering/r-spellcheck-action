@@ -1,2 +1,2 @@
-# r-spelling-check-action
-Github Actions to implement check spelling for R package development
+# R-spelling-check-action
+Github Action to implement check spelling for R package during development process

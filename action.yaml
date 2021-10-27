@@ -1,0 +1,19 @@
+name: "R package - check spelling action"
+description: "Github Action to implement R development check spelling for package development"
+branding:
+  icon: 'arrow-down'
+  color: 'blue'
+runs:
+  using: "composite"
+  steps:
+      - name: 
+        run: |
+          options(repos = c(CRAN = "https://cloud.r-project.org/"))
+          ncores <- parallel::detectCores(all.tests = FALSE, logical = TRUE)
+          # install devtools, if not installed
+          if (!require("devtools")) install.packages("devtools", upgrade = "never", Ncpus = ncores)
+        shell: Rscript {0}
+
+      - name: Check spelling
+        run: ${GITHUB_ACTION_PATH}/spell-check.R
+        shell: Rscript

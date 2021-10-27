@@ -1,0 +1,39 @@
+---
+name: Spelling Check action test
+
+on:
+  push:
+    tags:
+      - "v*"
+    branches:
+      - main
+      - pre-release
+  pull_request:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    name: ${{ matrix.image }}, version ${{ matrix.tag }}
+    container:
+      image: ${{ matrix.image }}:${{ matrix.tag }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ["rocker/verse"]
+        tag: ["4.1.0", "4.0.3", "3.6.3"]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Checkout test repo
+        uses: actions/checkout@v2
+        with:
+          repository: "openpharma/stageddeps.elecinfra"
+          path: "stageddeps.elecinfra"
+
+      - name: Test spelling check for elecinfra
+        uses: ./
+        env:
+          SC_REPO_PATH: "stageddeps.elecinfra"
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
