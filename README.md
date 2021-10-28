@@ -14,11 +14,10 @@ The [spelling] package simplifies the development process for developing R packa
 
 ## How to use
 
-
 To use this GitHub Action you will need to complete the following:
 
-1. Add action `Run Spelling Check test` to be one of the steps
-2. Open up a pull request and observe the action working
+1. Add action `Run Spelling Check test` as one of the steps.
+2. Open a pull request and observe the action working.
 
 
 ```yml
