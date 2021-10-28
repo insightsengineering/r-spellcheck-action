@@ -1,5 +1,5 @@
 # R-spelling-check-action
-Github Action to implement check spelling for R package during development process
+Github Action to implement check spelling for R packages during the development process.
 
 
 The [spelling] package simplifies the development process for developing R packages by delivering `Tools for Spell Checking in R`. This action is to simplify step of spelling verification of R package.
