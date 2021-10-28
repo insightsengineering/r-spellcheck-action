@@ -1,8 +1,8 @@
 # R-spelling-check-action
-Github Action to implement check spelling for R package during development process
+Github Action to implement check spelling for R packages during the development process.
 
 
-The [spelling] package simplifies the development process for developing R packages by delivering `Tools for Spell Checking in R`. This action is to simplify step of 
+The [spelling] package simplifies the development process for developing R packages by delivering `Tools for Spell Checking in R`. This action is to simplify the step of spelling verification of an R package.
 
 ## Table of Contents
 
@@ -14,11 +14,10 @@ The [spelling] package simplifies the development process for developing R packa
 
 ## How to use
 
-
 To use this GitHub Action you will need to complete the following:
 
-1. Add action `Run Spelling Check test` to be one of the steps
-2. Open up a pull request and observe the action working
+1. Add action `Run Spelling Check test` as one of the steps.
+2. Open a pull request and observe the action working.
 
 
 ```yml
@@ -45,7 +44,9 @@ jobs:
 
       - name: Run Spelling Check test
         uses: insightsengineering/r-spelling-check-action@v1
-      
+        env:
+          SC_REPO_PATH: ${{ github.event.repository.name }}
+
       - name: Build R package
         run: |
           R CMD build ${{ github.event.repository.name }}
@@ -72,3 +73,4 @@ The r-spelling-check-action allows you to pass the following `ENV` variables to 
 
 
 [spelling]: https://github.com/ropensci/spelling
+[spelling action in marketplace]: https://github.com/marketplace/actions/r-package-check-spelling-action

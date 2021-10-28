@@ -1,5 +1,5 @@
 name: "R package - check spelling action"
-description: "Github Action to implement R development check spelling for package development"
+description: "Github Action to implement R check spelling step during package development"
 branding:
   icon: 'feather'
   color: 'green'
