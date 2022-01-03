@@ -33,7 +33,7 @@ jobs:
           path: ${{ matrix.repo }}
 
       - name: Test action for ${{ matrix.repo }}
-        uses: .
+        uses: ./
         with:
           path: ${{ matrix.repo }}
           exclude: "inst/extdata"
