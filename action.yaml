@@ -27,7 +27,5 @@ runs:
         shell: Rscript {0}
 
       - name: Check spelling
-        run: Rscript --vanilla \
-          ${GITHUB_ACTION_PATH}/spellcheck.R \
-          ${{ inputs.path }} ${{ inputs.exclude }}
-        shell: sh
+        run: ${GITHUB_ACTION_PATH}/spellcheck.R ${{ inputs.path }} ${{ inputs.exclude }}
+        shell: bash
