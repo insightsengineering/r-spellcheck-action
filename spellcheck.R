@@ -1,14 +1,9 @@
 #!/usr/bin/env -S Rscript --vanilla
 
-args = commandArgs(trailingOnly=TRUE)
+args <- commandArgs(trailingOnly=TRUE
+exclusions <- args[1]
 
-repo_path <- args[1]
-exclusions <- args[2]
-
-cat(paste("\nRepo path:", repo_path))
 cat(paste("\nFiles to exclude:", exclusions))
-
-setwd(repo_path)
 
 # Temporarily delete excluded files
 removed <- FALSE
@@ -18,7 +13,6 @@ if (exclusions != "") {
 }
 
 spell_check_result <- spelling::spell_check_package(
-    pkg = repo_path,
     vignettes = TRUE,
     use_wordlist = TRUE
 )
