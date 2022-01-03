@@ -3,7 +3,7 @@
 repo_path <- Sys.getenv("INPUT_PATH", ".")
 exclusions <- Sys.getenv("INPUT_EXCLUDE", "")
 
-setwed(repo_path)
+setwd(repo_path)
 
 # Temporarily delete excluded files
 removed <- FALSE
