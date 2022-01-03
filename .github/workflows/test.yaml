@@ -32,10 +32,6 @@ jobs:
           repository: ${{ matrix.repo }}
           path: test
 
-      - name: List all files
-        run: find . -type f
-        shell: bash
-
       - name: Test action for ${{ matrix.repo }}
         uses: ./
         with:
