@@ -5,7 +5,7 @@ exclusions <- args[1]
 
 # Temporarily delete excluded files
 removed <- FALSE
-if (exclusions != "") {
+if (! is.na(exclusions)) {
     excluded_paths <- dir(pattern=exclusions)
     removed <- file.remove(excluded_paths)
 }
