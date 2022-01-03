@@ -37,3 +37,4 @@ jobs:
         uses: ./
         with:
           path: ${{ matrix.repo }}
+          exclude: "inst/extdata"
