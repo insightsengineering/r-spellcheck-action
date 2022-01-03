@@ -3,6 +3,7 @@
 
 ### Description
 Checks for spelling errors in R packages
+
 ### Action Type
 Composite
 
@@ -49,7 +50,7 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    name: Check
+    name: Spellcheck
     container:
       image: rocker/tidyverse:4.1.2
     steps:
