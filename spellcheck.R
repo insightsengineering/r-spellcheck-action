@@ -28,7 +28,7 @@ if (no_of_detected_words > 0) {
 }
 
 # Restore excluded files
-if (removed) {
+if (isTRUE(removed)) {
     system("git checkout .", ignore.stdout = TRUE)
 }
 
