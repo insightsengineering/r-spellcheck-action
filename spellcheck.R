@@ -1,6 +1,6 @@
 #!/usr/bin/env -S Rscript --vanilla
 
-args <- commandArgs(trailingOnly=TRUE
+args <- commandArgs(trailingOnly=TRUE)
 exclusions <- args[1]
 
 cat(paste("\nFiles to exclude:", exclusions))
