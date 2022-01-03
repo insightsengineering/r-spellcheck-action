@@ -29,9 +29,8 @@ jobs:
       - name: Checkout test repo
         uses: actions/checkout@v2
         with:
-          repository: insightsengineering/r.pkg.template
+          repository: ${{ matrix.repo }}
           path: ${{ matrix.repo }}
-          
 
       - name: Test action for ${{ matrix.repo }}
         uses: ./

@@ -1,10 +1,12 @@
 #!/usr/bin/env Rscript
 
-repo_path <- Sys.getenv("INPUT_PATH", ".")
-exclusions <- Sys.getenv("INPUT_EXCLUDE", "")
+args = commandArgs(trailingOnly=TRUE)
 
-cat(paste("Repo path:", repo_path))
-cat(paste("Files to exclude:", exclusions))
+repo_path <- args[1]
+exclusions <- args[2]
+
+cat(paste("\nRepo path:", repo_path))
+cat(paste("\nFiles to exclude:", exclusions))
 
 setwd(repo_path)
 
@@ -25,8 +27,8 @@ print(spell_check_result)
 # count detected words
 no_of_detected_words <- length(spell_check_result[, 1])
 if (no_of_detected_words > 0) {
-    cat(paste('Number of misspelled words:', no_of_detected_words))
-    cat('You may correct the spellings of the words above or add them to the "inst\\WORDLIST" file by running spelling::update_wordlist()\n')
+    cat(paste('\nNumber of misspelled words:', no_of_detected_words))
+    cat('\nYou may correct the spellings of the words above or add them to the "inst\\WORDLIST" file by running spelling::update_wordlist()\n')
 } else {
     cat("Spellcheck passed!\n")
 }
