@@ -33,7 +33,7 @@ jobs:
           path: ${{ matrix.repo }}
           
 
-      - name: Test spelling check for elecinfra
+      - name: Test action for ${{ matrix.repo }}
         uses: ./
         with:
           path: ${{ matrix.repo }}

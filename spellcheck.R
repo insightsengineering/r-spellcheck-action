@@ -3,10 +3,13 @@
 repo_path <- Sys.getenv("INPUT_PATH", ".")
 exclusions <- Sys.getenv("INPUT_EXCLUDE", "")
 
+setwed(repo_path)
+
 # Temporarily delete excluded files
+removed <- FALSE
 if (exclusions != "") {
-    excluded_paths <- dir(path=repo_path,  pattern=exclusions)
-    file.remove(excluded_paths)
+    excluded_paths <- dir(pattern=exclusions)
+    removed <- file.remove(excluded_paths)
 }
 
 spell_check_result <- spelling::spell_check_package(
@@ -26,9 +29,8 @@ if (no_of_detected_words > 0) {
 }
 
 # Restore excluded files
-if (exclusions != "") {
-    setwed(repo_path)
-    system("git checkout .", ignore.stdout=T)
+if (removed) {
+    system("git checkout .", ignore.stdout = TRUE)
 }
 
 # return error code as number of detected words as a result of script
