@@ -1,6 +1,34 @@
-# R Spellcheck Action
+<!-- BEGIN_ACTION_DOC -->
+# R spellcheck action
 
-Github Action that uses the [spellcheck](https://github.com/ropensci/spelling) R package to verify spellings in an R package.
+### Description
+Checks for spelling errors in R packages
+### Action Type
+Composite
+
+### Author
+Insights Engineering
+
+### Inputs
+* `path`:
+
+  _Description_: Path to package root
+
+  _Required_: `false`
+
+  _Default_: `.`
+
+* `exclude`:
+
+  _Description_: Files or folders to exclude from spellcheck
+
+  _Required_: `false`
+
+  _Default_: `""`
+
+### Outputs
+None
+<!-- END_ACTION_DOC -->
 
 ## Usage
 
