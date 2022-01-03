@@ -19,8 +19,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: ["rocker/verse"]
-        tag: ["4.1.0", "4.0.3", "3.6.3"]
+        image: ["rocker/tidyverse"]
+        tag: ["4.1.2"]
+        repo: ["insightsengineering/r.pkg.template"]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -28,12 +29,11 @@ jobs:
       - name: Checkout test repo
         uses: actions/checkout@v2
         with:
-          repository: "openpharma/stageddeps.elecinfra"
-          path: "stageddeps.elecinfra"
+          repository: ${{ matrix.repo }}
+          path: test
 
-      - name: Test spelling check for elecinfra
+      - name: Test action for ${{ matrix.repo }}
         uses: ./
-        env:
-          SC_REPO_PATH: "stageddeps.elecinfra"
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-
+        with:
+          path: test
+          exclude: "inst/extdata"

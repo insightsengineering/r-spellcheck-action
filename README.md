@@ -1,28 +1,43 @@
-# R-spelling-check-action
-Github Action to implement check spelling for R packages during the development process.
+<!-- BEGIN_ACTION_DOC -->
+# R spellcheck action
 
+### Description
+Checks for spelling errors in R packages
 
-The [spelling] package simplifies the development process for developing R packages by delivering `Tools for Spell Checking in R`. This action is to simplify the step of spelling verification of an R package.
+### Action Type
+Composite
 
-## Table of Contents
+### Author
+Insights Engineering
 
-- [r-spelling-check-action](#r-spelling-check-action)
-  - [Table of Contents](#table-of-contents)
-  - [How to use](#how-to-use)
-  - [Environment variables](#environment-variables)
+### Inputs
+* `path`:
 
+  _Description_: Path to package root
 
-## How to use
+  _Required_: `false`
 
-To use this GitHub Action you will need to complete the following:
+  _Default_: `.`
 
-1. Add action `Run Spelling Check test` as one of the steps.
-2. Open a pull request and observe the action working.
+* `exclude`:
 
+  _Description_: Files or folders to exclude from spellcheck
+
+  _Required_: `false`
+
+  _Default_: `""`
+
+### Outputs
+None
+<!-- END_ACTION_DOC -->
+
+## Usage
+
+Here's an example workflow demonstrating how this action can be used:
 
 ```yml
 ---
-name: Check R package
+name: Spellcheck
 
 on:
   push:
@@ -35,42 +50,13 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    name: Check
+    name: Spellcheck
     container:
-      image: rocker/verse:4.1.0
+      image: rocker/tidyverse:4.1.2
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Run Spelling Check test
-        uses: insightsengineering/r-spelling-check-action@v1
-        env:
-          SC_REPO_PATH: ${{ github.event.repository.name }}
-
-      - name: Build R package
-        run: |
-          R CMD build ${{ github.event.repository.name }}
-          echo "PKGBUILD=$(echo *.tar.gz)" >> $GITHUB_ENV
-        shell: bash
-
-      - name: Check R package
-        run: R CMD check --no-manual ${{ env.PKGBUILD }}
-        shell: bash
-
-      - name: Install R package
-        run: R CMD INSTALL ${{ env.PKGBUILD }}
-        shell: bash
+        uses: insightsengineering/r-spellcheck-action@v2
 ```
-
-## Environment variables
-
-The r-spelling-check-action allows you to pass the following `ENV` variables to be able to trigger different functionality.
-
-| **ENV VAR** | **Default Value** | **Notes** |
-| ----------- | ----------------- | --------- |
-| **SC_REPO_PATH** | `.` | path to the R package |
-
-
-
-[spelling]: https://github.com/ropensci/spelling
-[spelling action in marketplace]: https://github.com/marketplace/actions/r-package-check-spelling-action

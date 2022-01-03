@@ -1,19 +1,33 @@
-name: "R package - check spelling action"
-description: "Github Action to implement R check spelling step during package development"
+name: R spellcheck action
+author: Insights Engineering
+description: Checks for spelling errors in R packages
+
 branding:
-  icon: 'feather'
-  color: 'green'
+  icon: feather
+  color: blue
+
+inputs:
+  path:
+    description: Path to package root
+    required: false
+    default: "."
+  exclude:
+    description: Files or folders to exclude from spellcheck
+    required: false
+    default: ""
+
 runs:
-  using: "composite"
+  using: composite
   steps:
-      - name: 
+      - name: Optionally install the spelling package
         run: |
           options(repos = c(CRAN = "https://cloud.r-project.org/"))
           ncores <- parallel::detectCores(all.tests = FALSE, logical = TRUE)
-          # install devtools, if not installed
           if (!require("spelling")) install.packages("spelling", upgrade = "never", Ncpus = ncores)
         shell: Rscript {0}
 
       - name: Check spelling
-        run: Rscript --vanilla ${GITHUB_ACTION_PATH}/spell-check.R
-        shell: sh
+        run: |
+          cd ${{ inputs.path }}
+          ${GITHUB_ACTION_PATH}/spellcheck.R ${{ inputs.exclude }}
+        shell: bash
