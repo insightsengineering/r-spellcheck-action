@@ -1,11 +1,11 @@
-#!/usr/bin/env -S Rscript --vanilla
+#!/usr/bin/env Rscript
 
 args <- commandArgs(trailingOnly=TRUE)
-exclusions <- args[1]
+exclusions <- strsplit(args[1], ",")[[1]]
 
 # Temporarily delete excluded files
 removed <- FALSE
-if (! is.na(exclusions)) removed <- file.remove(Sys.glob(exclusions))
+if (! is.na(exclusions)) removed <- lapply(exclusions, file.remove)
 
 spell_check_result <- spelling::spell_check_package(
     vignettes = TRUE,

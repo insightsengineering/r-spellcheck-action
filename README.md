@@ -2,15 +2,19 @@
 # R spellcheck action
 
 ### Description
+
 Checks for spelling errors in R packages
 
 ### Action Type
+
 Composite
 
 ### Author
+
 Insights Engineering
 
 ### Inputs
+
 * `path`:
 
   _Description_: Path to package root
@@ -21,13 +25,22 @@ Insights Engineering
 
 * `exclude`:
 
-  _Description_: Files or folders to exclude from spellcheck
+  _Description_: Comma separated list of files or folders to exclude from spellcheck. Accepts globs.
 
   _Required_: `false`
 
   _Default_: `""`
 
+* `additional_options`:
+
+  _Description_: Additional options to pass to Rscript.
+
+  _Required_: `false`
+
+  _Default_: `--vanilla`
+
 ### Outputs
+
 None
 <!-- END_ACTION_DOC -->
 
