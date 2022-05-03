@@ -8,13 +8,17 @@ branding:
 
 inputs:
   path:
-    description: Path to package root
+    description: Path to package root.
     required: false
     default: "."
   exclude:
-    description: Files or folders to exclude from spellcheck
+    description: Comma separated list of files or folders to exclude from spellcheck. Accepts globs.
     required: false
     default: ""
+  additional_options:
+    description: Additional options to pass to Rscript.
+    required: false
+    default: --vanilla
 
 runs:
   using: composite
@@ -29,5 +33,7 @@ runs:
       - name: Check spelling
         run: |
           cd ${{ inputs.path }}
-          ${GITHUB_ACTION_PATH}/spellcheck.R ${{ inputs.exclude }}
+          Rscript ${{ inputs.additional_options }} \
+            ${GITHUB_ACTION_PATH}/spellcheck.R \
+            ${{ inputs.exclude }}
         shell: bash
