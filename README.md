@@ -73,3 +73,6 @@ jobs:
       - name: Run Spelling Check test
         uses: insightsengineering/r-spellcheck-action@v2
 ```
+
+An example of the output of the action can be seen below:
+![Screenshot with example output](example.png)
