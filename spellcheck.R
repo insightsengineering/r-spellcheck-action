@@ -5,7 +5,7 @@ exclusions <- strsplit(args[1], ",")[[1]]
 
 # Temporarily delete excluded files
 removed <- FALSE
-if (! is.na(exclusions)) removed <- lapply(Sys.glob(exclusions), file.remove)
+if (any(!is.na(exclusions))) removed <- lapply(Sys.glob(exclusions), file.remove)
 
 spell_check_result <- spelling::spell_check_package(
     vignettes = TRUE,
